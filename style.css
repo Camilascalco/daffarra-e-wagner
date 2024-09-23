@@ -1,0 +1,30 @@
+body{
+    background-color: grey;
+    
+}
+
+.label{
+
+    background-color: rgb( 92, 132, 226);
+
+}
+
+.input{
+    border-radius: 5px;
+
+}
+
+header {
+
+    text-align: center;
+    background-color: aquamarine;
+
+}
+
+main{
+
+    text-align: center;
+    background-color: bisque;
+    height: 500px;
+
+}
