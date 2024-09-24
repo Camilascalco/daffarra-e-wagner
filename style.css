@@ -1,39 +1,70 @@
-body{
-    background-color: grey;
-}
-
-
-.label{
-
-    background-color: rgb(92, 132, 226);
-    
-}
-
-.input{
-     border-radius: 5px;
-}
-
-header{
-
-    text-align: center;
-    background-color: aquamarine;
-
-}
-
-form{
-    margin-top: 50px;
-    text-align: right;
-    background-color: bisque;
-    height: 500px;
-    width: auto;
-    
-    
-}
-
-main{
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #f8cdda, #1d2b64);
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: bisque;
+    height: 100vh;
+}
 
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 350px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #f8cdda;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff3d3d;
+}
+
+.mensagem {
+    margin-top: 20px;
+    text-align: center;
+    color: #28a745;
+    font-weight: bold;
+    transition: opacity 0.3s;
 }

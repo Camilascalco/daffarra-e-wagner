@@ -1,47 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Cadastro</title>
+    <title>Cadastro de Animal - Clínica Veterinária</title>
 </head>
 <body>
-    <header>
-    <div>
-        <h1>Cadastro Cliente</h1>
-        <p>Preencha os dados completos para cadastro</p>
+    <div class="container">
+        <h1>Cadastro de Animal</h1>
+        <form id="animalForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" placeholder="Digite o nome" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <input type="text" id="tipo" placeholder="Cão, Gato, etc." required>
+            </div>
+            <div class="form-group">
+                <label for="idade">Idade (anos):</label>
+                <input type="number" id="idade" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="raca">Raça:</label>
+                <input type="text" id="raca" placeholder="Raça do animal" required>
+            </div>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div id="mensagem" class="mensagem"></div>
     </div>
-    </header>
-    <main>
-    <form action="#" method="post">
-        <label class="label" for="nome_aluno">Nome Completo do Cliente</label>
-        <input class="input" type="text" name="nome_cliente" id="nome_cliente">
-        <br>
-        <br>
-        <label class="label" for="email_aluno">email</label>
-        <input class="input" type="cliente" name="email_cliente" id="email_cliente">
-        <br>
-        <br>
-        <label class="label" for="email_aluno">Endereço</label>
-        <input class="input" type="endereço" name="endereço_cliente" id="endereço_cliente">
-        <br>
-        <br>
-        <label class="label" for="telefone_cliente">Telefone</label>
-        <input class="input" type="telefone" name="telefone_cliente" id="telefone_cliente">
-        <br>
-        <br>
-        <label class="label" for="senha_aluno">Senha</label>
-        <input class="input" type="password" name="senha_aluno" id="senha_aluno">
-        <br><br>
-        
-        <br><br>
-        <button anclick ="cadastro_cliente()"> cadastro </button>
-    
-
-    </form>
-    </main>
-
+    <script src="script.js"></script>
 </body>
 </html>
