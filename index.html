@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Cadastro de Animal - Clínica Veterinária</title>
+    <title>Cadastro do Cliente - Clínica Veterinária</title>
 </head>
 <body>
     <div class="container">
-        <h1>Cadastro de Animal</h1>
+        <h1>Cadastro do Cliente</h1>
         <form id="animalForm">
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" placeholder="Digite o nome" required>
             </div>
             <div class="form-group">
-                <label for="tipo">Tipo:</label>
-                <input type="text" id="tipo" placeholder="Cão, Gato, etc." required>
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="email@gmail.com" required>
             </div>
             <div class="form-group">
-                <label for="idade">Idade (anos):</label>
-                <input type="number" id="idade" min="0" required>
+                <label for="data">Data:</label>
+                <input type="date" id="data placeholder= "00/00/0000" required>
             </div>
             <div class="form-group">
-                <label for="raca">Raça:</label>
-                <input type="text" id="raca" placeholder="Raça do animal" required>
+                <label for="genero">Gênero:</label>
+                <input type="text" id="genero" placeholder="genero" required>
             </div>
             <button type="submit">Cadastrar</button>
         </form>
