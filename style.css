@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #f8cdda, #1d2b64);
+    background: linear-gradient(to right, #acf5e5,#18aa8b,);
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
@@ -48,7 +48,7 @@ input:focus {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #ff6b6b;
+    background-color: #8ae5c7;
     color: white;
     border: none;
     border-radius: 5px;
@@ -58,7 +58,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff3d3d;
+    background-color: #20d4a7;
 }
 
 .mensagem {
