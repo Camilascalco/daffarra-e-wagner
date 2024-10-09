@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Prontuário de Consulta - Clínica Veterinária</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Prontuário</h1>
+        <form id="funciForm">
+            <div class="form-group">
+                <label for="nome">Nome do Clinte</label>
+                <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nome do animal">Nome do Animal:</label>
+                <input type="text" id="tipo" placeholder="Digite o nome do animal" required>
+            </div>
+
+            <div class="form-group">
+                <label for="data_nascimeto_animal">Data de Nascimento do Animal:</label>
+                <input type="date" id="data" placeholder= "00/00/0000" required>
+            </div>
+
+            <div class="form-group">  
+                <label for="especie_animal">Espécie:</label>
+                <input type="text" id="especie_animal" placeholder="Digite a espécie" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="porte">Porte:</label>
+                <select id="porte" name="tipo_porte">
+                  <option value="porte_pequeno">Pequeno</option>
+                  <option value="porte_médio">Médio</option>
+                  <option value="porte_grande">Grande</option>
+                </select>
+            </div>
+
+            <div class="form-group">  
+                <label for="raca_animal">Raça:</label>
+                <input type="text" id="raca_animal" placeholder="Digite a raça" required>
+            </div>
+
+            <div class="form-group">  
+                <label for="peso_animal">Peso (kg):</label>
+                <input type="number" id="peso_animal" name="peso_animal" step="0.01" required>
+            </div>
+
+            <div class="form-group">  
+                <label for="alergias">Alergias:</label>
+                <input type="text" id="alergias" name="alergias" placeholder="Ex: Pólen, Frutos do mar">
+            </div>
+
+            <div class="form-group">  
+                <label for="vacinas">Vacinas Administradas:</label>
+                <input type="text" id="vacinas" name="vacinas" placeholder="Ex: V10, Raiva">
+            </div>
+
+            <div class="form-group"> 
+                <label for="historico_medico">Histórico Médico:</label>
+                <input type="text" id="historico_medico" name="historico_medico" placeholder="Ex: Doenças anteriores">
+            </div>
+
+            <div class="form-group">  
+                <label for="diagnostico">Diagnóstico:</label>
+                <input type="text" id="diagnostico" name="diagnostico" placeholder="Ex: Infecção respiratória" required>
+            </div>
+
+            <div class="form-group"> 
+                <label for="tratamento">Tratamento Recomendado:</label>
+                <input type="text" id="tratamento" name="tratamento" placeholder="Ex: Antibióticos, Reposição hídrica" required>
+            </div>
+
+            <button type="submit">Salvar Prontuário</button>
+        </form>
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>  

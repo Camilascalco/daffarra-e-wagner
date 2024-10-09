@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Produtos - Clínica Veterinária</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Produtos</h1>
+        <form id="funciForm">
+
+     <div class="form-group">
+            <label for="nome">Nome do Fornecedor</label>
+            <input type="text" id="nome" placeholder="Digite o nome do fornecedor" required>
+     </div>
+
+    <div class="form-group">
+            <label for="nome_produto">Nome do Produto:</label>
+            <input type="text" id="nome_produto" placeholder="Digite o nome do Produto" required>
+    </div>
+
+    <div class="form-group">
+        <label for="categoria_produto">Categoria:</label>
+        <select id="categoria_produto" name="categoria_produto" required>
+            <option value="ração">Ração</option>
+            <option value="medicamento">Medicamento</option>
+            <option value="brinquedo">Brinquedo</option>
+            <option value="higiene">Higiene</option>
+            <option value="acessório">Acessório</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="preco_produto">Preço (R$):</label>
+        <input type="number" id="preco_produto" name="preco_produto" step="0.01" required>
+    </div> 
+
+    <div class="form-group">
+        <label for="quantidade_estoque">Quantidade em Estoque:</label>
+        <input type="number" id="quantidade_estoque" name="quantidade_estoque" required>
+    </div>
+
+    <div class="form-group">
+        <label for="descricao_produto">Descrição:</label>
+        <input type="text" id="descricao_produto" name="descricao_produto" placeholder="Ex: Ração para cães, 15kg" required>
+    </div>
+
+    <button type="submit">Salvar Prontuário</button>
+        </form>
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>  
