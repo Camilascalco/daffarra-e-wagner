@@ -1,4 +1,4 @@
-ocument.getElementById('animalForm').addEventListener('submit', function(event) {
+document.getElementById('animalForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
     const nome = document.getElementById('nome').value;
