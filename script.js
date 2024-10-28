@@ -13,70 +13,62 @@ async function cadastrarPet() {
     alert('Animal cadastrado com sucesso!');
   }
   
-  async function consultar() {
-      const nome = document.getElementById('nome').value;
-      const cgm = document.getElementById('cgm').value;
-      const materia = document.getElementById('materia').value;
-      const notaMin = document.getElementById('notaMin').value;
-      const notaMax = document.getElementById('notaMax').value;
-  
+  async function cadastrarPet() {
+    const nome = document.getElementById('nome').value;
+    const tipo = document.getElementById('tipo').value;
+    const idade = document.getElementById('idade').value;
+    const raça  = document.getElementById('raça').value;
+
       const queryParams = new URLSearchParams();
       if (nome) queryParams.append('nome', nome);
-      if (cgm) queryParams.append('cgm', cgm);
-      if (materia) queryParams.append('materia', materia);
-      if (notaMin) queryParams.append('notaMin', notaMin);
-      if (notaMax) queryParams.append('notaMax', notaMax);
+      if (tipo) queryParams.append('tipo', tipo);
+      if (idade) queryParams.append('idade', idade);
+      if (raça) queryParams.append('raça', raça);
+      
+      const response = await fetch(`/consultar-Pet?${queryParams.toString()}`);
   
-      // Faz a requisição para a rota de consulta
-      const response = await fetch(`/consultar-alunos?${queryParams.toString()}`);
-  
-      // Verifica se a resposta foi bem sucedida
       if (!response.ok) {
-          console.error('Erro ao consultar alunos:', response.statusText);
+          console.error('Erro ao consultar Pet:', response.statusText);
           return;
       }
   
-      const alunos = await response.json();
-      console.log('Alunos retornados:', alunos); // Adiciona log para verificar dados retornados
+      const Pet = await response.json();
+      console.log('Pet retornados:', Pet); 
       const tabelaResultados = document.getElementById('resultadoConsulta');
       const tbody = tabelaResultados.querySelector('tbody');
-      tbody.innerHTML = ''; // Limpa a tabela antes de adicionar resultados
+      tbody.innerHTML = ''; 
   
-      if (alunos.length > 0) {
+      if (Pet.length > 0) {
           tabelaResultados.style.display = 'table';
-          alunos.forEach(aluno => {
+          Pet.forEach(Pet => {
               const row = document.createElement('tr');
               row.innerHTML = `
-                  <td>${aluno.cgm}</td>
-                  <td>${aluno.nome}</td>
-                  <td>${aluno.materia || '-'}</td>
-                  <td>${aluno.nota || '-'}</td>
+                  <td>${Pet.cgm}</td>
+                  <td>${Pet.nome}</td>
+                  <td>${Pet.materia || '-'}</td>
+                  <td>${Pet.nota || '-'}</td>
               `;
               tbody.appendChild(row);
           });
         alert("ok");
       } else {
           tabelaResultados.style.display = 'none';
-          alert('Nenhum aluno encontrado com os critérios informados.');
+          alert('Nenhum animal encontrado com os critérios informados.');
       }
   }
   
-  async function buscarAluno() {
-    const buscaAluno = document.getElementById('buscaAluno').value;
+  async function buscarPet() {
+    const buscarPet = document.getElementById('buscaPet').value;
   
-    // Se o campo de busca estiver vazio, não faz nada
-    if (buscaAluno === '') return;
+    if (buscarPet === '') return;
   
-    // Faz a busca no servidor
-    const response = await fetch(`/buscar-aluno?query=${buscaAluno}`);
+    const response = await fetch(`/buscar-pet?query=${buscarPet}`);
   
-    // Verifica se a resposta foi bem-sucedida
     if (response.ok) {
-        const alunos = await response.json();
+        const pet = await response.json();
   
-        // Seleciona o dropdown de alunos
-        const alunoSelecionado = document.getElementById('alunoSelecionado');
-        alunoSelecionado.innerHTML = '<option value="">Selecione um aluno</option>';
+        const petSelecionado = document.getElementById('petSelecionado');
+        petSelecionado.innerHTML = '<option value="">Selecione um aluno</option>';
   
         // Preenche o dropdown com os resultados da busca
         alunos.forEach(aluno => {
