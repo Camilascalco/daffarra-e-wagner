@@ -68,54 +68,18 @@ async function cadastrarPet() {
         const pet = await response.json();
   
         const petSelecionado = document.getElementById('petSelecionado');
-        petSelecionado.innerHTML = '<option value="">Selecione um aluno</option>';
+        petSelecionado.innerHTML = '<option value="">Selecione um animal</option>';
   
-        // Preenche o dropdown com os resultados da busca
-        alunos.forEach(aluno => {
+        Pet.forEach(Pet => {
             const option = document.createElement('option');
-            option.value = aluno.cgm;
-            option.textContent = `${aluno.nome} (CGM: ${aluno.cgm})`;
-            alunoSelecionado.appendChild(option);
+            option.value = Pet.nome_cliente;
+            option.textContent = `${Pet.nome} (Tipo: ${Pet.tipo})`;
+            petSelecionado.appendChild(option);
         });
   
     } else {
-        alert('Erro ao buscar alunos. Tente novamente.');
+        alert('Erro ao buscar animais. Tente novamente.');
     }
-  }
-  async function cadastrarCliente() {
-    const nome = document.getElementById('clienteSelecionado').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
-    const data_nascimento = document.getElementById('datanascimento').value;
-    const nome_do_animal = document.getElementById('nomeanimal').value;
-    if (!nome) {
-        alert('Por favor, selecione um cliente.');
-        return;
-    }
-    await fetch('/cadastrar-cliente', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome,email,telefone,data_nascimento,nome_do_animal })
-    });
-    alert('Ciente cadastrado com sucesso!');
-  }
-  
-  async function cadastrarCliente() {
-    const nome = document.getElementById('clienteSelecionado').value;
-    const email = document.getElementById('email').value;
-    const telefone = document.getElementById('telefone').value;
-    const data_nascimento = document.getElementById('datanascimento').value;
-    const nome_do_animal = document.getElementById('nomeanimal').value;
-    if (!nome) {
-        alert('Por favor, selecione um cliente.');
-        return;
-    }
-    await fetch('/cadastrar-cliente', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome,email,telefone,data_nascimento,nome_do_animal })
-    });
-    alert('Ciente cadastrado com sucesso!');
   }
   
   async function cadastrarCliente() {
