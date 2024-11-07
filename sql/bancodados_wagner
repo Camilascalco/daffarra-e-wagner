@@ -1,0 +1,68 @@
+CREATE TABLE clientes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cpf TEXT NOT NULL UNIQUE,
+    telefone TEXT NOT NULL,
+    email TEXT NOT NULL,
+    endereco TEXT NOT NULL
+);
+
+CREATE TABLE animais (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    especie TEXT NOT NULL,
+    raca TEXT NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cliente_id INTEGER,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
+
+CREATE TABLE consultas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    tipo_consulta TEXT NOT NULL,
+    observacao TEXT,
+    cliente_id INTEGER,
+    animal_id INTEGER,
+    funcionario_id INTEGER,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+    FOREIGN KEY (animal_id) REFERENCES animais(id),
+    FOREIGN KEY (funcionario_id) REFERENCES funcionarios(id)
+);
+
+CREATE TABLE prontuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data DATE NOT NULL,
+    especie_animal TEXT NOT NULL,
+    porte TEXT NOT NULL,
+    raca_animal TEXT NOT NULL,
+    peso_animal REAL,
+    alergias TEXT,
+    vacinas TEXT,
+    historico_medico TEXT,
+    diagnostico TEXT NOT NULL,
+    tratamento TEXT NOT NULL,
+    animal_id INTEGER,
+    funcionario_id INTEGER,
+    FOREIGN KEY (animal_id) REFERENCES animais(id),
+    FOREIGN KEY (funcionario_id) REFERENCES funcionarios(id)
+);
+
+CREATE TABLE servicos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tipo_servico TEXT NOT NULL
+);
+
+CREATE TABLE funcionarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    cpf TEXT NOT NULL UNIQUE,
+    telefone TEXT NOT NULL,
+    email TEXT NOT NULL,
+    data_nascimento DATE NOT NULL,
+    data_admissao DATE NOT NULL,
+    carteira_trabalho TEXT NOT NULL,
+    setor TEXT NOT NULL
+);
+
