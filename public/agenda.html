@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Consulta - Clínica Veterinária</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cadastropet.html">Cadastro do Animal</a></li>
+                <li><a href="cadastrofuncionario.html">Cadastro do funcionario</a></li>
+                <li><a href="cadastrotutor.html">Cadastro do Tutor</a></li>
+                <li><a href="agenda.html">Agenda de Cadastro</a></li>
+                <li><a href="prontuario.html">Prontuário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <div class="container">
+        <h1>Cadastro de Consulta</h1>
+        <form id="funciForm">
+            <div class="form-group">
+                <label for="data-consulta">Data da Consulta</label>
+                <input type="date" id="data-consulta" placeholder="Data da Consulta" required>
+            </div>
+            <div class="form-group">
+                <label for="hora-consulta">Hora</label>
+                <input type="time" id="hora-consulta" placeholder="Hora" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo-consulta">Tipo de Consulta</label>
+                <input type="text" id="tipo-consulta" placeholder="Tipo de Consulta" required>
+            </div>
+            <div class="form-group">
+                <label for="observacao-consulta">Observações</label>
+                <input type="text" id="observacao-consulta" placeholder="Observações">
+            </div>
+            <div class="form-group">
+                <label for="cliente-id-consulta">ID do Cliente</label>
+                <input type="number" id="cliente-id-consulta" placeholder="ID do Cliente" required>
+            </div>
+            <div class="form-group">
+                <label for="animal-id-consulta">ID do Animal</label>
+                <input type="number" id="animal-id-consulta" placeholder="ID do Animal" required>
+            </div>
+            <div class="form-group">
+                <label for="funcionario-id-consulta">CPF do Funcionário</label>
+                <input type="number" id="funcionario-id-consulta" placeholder="CPF do Funcionário" required>
+            </div>
+
+
+
+            <button type="submit" onclick="cadastrarConsulta()">Cadastrar</button>
+        </form>
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+    <script src="agenda.js"></script>
+    </main>
+
+</body>
+</html>  
