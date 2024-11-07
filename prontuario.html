@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Prontuário de Consulta - Clínica Veterinária</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cadastropet.html">Cadastro do Animal</a></li>
+                <li><a href="cadastrofuncionario.html">Cadastro do funcionario</a></li>
+                <li><a href="cadastrotutor.html">Cadastro do Tutor</a></li>
+                <li><a href="agenda.html">Agenda de Cadastro</a></li>
+                <li><a href="prontuario.html">Prontuário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <div class="container">
+        <h1>Prontuário</h1>
+        <form id="funciForm"> 
+
+            <div class="form-group">
+                <label for="8888">Data da Consulta:</label>
+                <input type="date" id="data-prontuario" placeholder="Data" required>
+            </div>
+            <div class="form-group">
+                <label for="8888">Especie:</label>
+                <input type="text" id="especie-prontuario" placeholder="Espécie" required>
+            </div>
+            <div class="form-group">
+                <label for="8888">porte:</label>
+               <select id="porte" required>
+                   <option value="Pequeno">Pequeno</option>
+                   <option value="Medio">Madio</option>
+                   <option value="Grande">Grande</option>
+               </select>
+            </div>
+            <div class="form-group">
+                <label for="8888">Raça:</label>
+                <input type="text" id="raca-prontuario" placeholder="Raça" required>
+            </div>
+            <div class="form-group">
+                <label for="8888">Peso:</label>
+                <input type="number" id="peso-prontuario" placeholder="Peso (kg)">
+            </div>
+            <div class="form-group">
+                <label for="8888">Data da Consulta:</label>
+                <input type="text" id="alergias-prontuario" placeholder="Alergias">
+            </div>
+            <div class="form-group">
+                <label for="8888">vacinas:</label>
+                <input type="text" id="vacinas-prontuario" placeholder="Vacinas">
+            </div>
+            <div class="form-group">
+                <label for="8888">Histórico Medico:</label>
+                <textarea id="historico-medico-prontuario" placeholder="Histórico Médico"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="8888">Diagnostico:</label>
+                <input type="text" id="diagnostico-prontuario" placeholder="Diagnóstico" required>
+            </div>
+            <div class="form-group">
+                <label for="8888">Tratamento:</label>
+                <input type="text" id="tratamento-prontuario" placeholder="Tratamento" required>
+            </div>
+            <div class="form-group">
+                <label for="8888">Id do Animal:</label>
+                <input type="number" id="animal-id-prontuario" placeholder="ID do Animal" required>
+            </div>
+            <div class="form-group">
+                <label for="qq">Id do Funcionario:</label>
+                <input type="number" id="funcionario-id-prontuario" placeholder="ID do Funcionário" required>
+            </div>
+
+
+            <button type="submit" onclick="cadastrarProntuario()">Salvar Prontuário</button>
+        </form>
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+    <script src="prontuario.js"></script>
+    </main>
+</body>
+</html>  
