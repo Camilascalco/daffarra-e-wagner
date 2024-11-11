@@ -11,9 +11,8 @@ async function cadastrarProntuario() {
     const historico_medico = document.getElementById('historico-medico-prontuario').value;
     const diagnostico = document.getElementById('diagnostico-prontuario').value;
     const tratamento = document.getElementById('tratamento-prontuario').value;
-    const animal_id = document.getElementById('animal-id-prontuario').value;
+    const animal_id = document.getElementById('animal-id-consulta').value;
     const funcionario_cpf = document.getElementById('funcionario-cpf-prontuario').value;
-    
 
     await fetch(`/cadastrar-prontuario`, {
         method: 'POST',
@@ -21,7 +20,7 @@ async function cadastrarProntuario() {
         body: JSON.stringify({ data, especie_animal, porte, raca_animal, peso_animal,
              alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_cpf })
     })
-    alert('32');
+    alert('Cadastrado!');
 }
 
 async function buscarpet() {
