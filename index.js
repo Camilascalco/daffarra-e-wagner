@@ -36,8 +36,8 @@ db.serialize(() => {
             especie TEXT NOT NULL,
             raca TEXT NOT NULL,
             data_nascimento DATE NOT NULL,
-            cliente_id INTEGER,
-            FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+            cliente_cpf TEXT NOT NULL,
+            FOREIGN KEY (cliente_cpf) REFERENCES clientes(cpf)
         )
     `);
 
@@ -64,12 +64,12 @@ db.serialize(() => {
             hora TIME NOT NULL,
             tipo_consulta TEXT NOT NULL,
             observacao TEXT,
-            cliente_id INTEGER,
+            cliente_cpf TEXT,
             animal_id INTEGER,
-            funcionario_id INTEGER,
-            FOREIGN KEY (cliente_id) REFERENCES clientes(id),
+            funcionario_cpf TEXT,
+            FOREIGN KEY (cliente_cpf) REFERENCES clientes(cpf),
             FOREIGN KEY (animal_id) REFERENCES animais(id),
-            FOREIGN KEY (funcionario_id) REFERENCES funcionarios(id)
+            FOREIGN KEY (funcionario_cpf) REFERENCES funcionarios(cpf)
         )
     `);
 
@@ -88,9 +88,9 @@ db.serialize(() => {
             diagnostico TEXT NOT NULL,
             tratamento TEXT NOT NULL,
             animal_id INTEGER,
-            funcionario_id INTEGER,
+            funcionario_cpf TEXT,
             FOREIGN KEY (animal_id) REFERENCES animais(id),
-            FOREIGN KEY (funcionario_id) REFERENCES funcionarios(id)
+            FOREIGN KEY (funcionario_cpf) REFERENCES funcionarios(cpf)
         )
     `);
 });
@@ -115,7 +115,7 @@ app.post('/cadastrar-cliente', (req, res) => {
 });
 
 // Rota para atualizar um cliente
-app.put('/atualizar-cliente', (req, res) => {
+/* app.put('/atualizar-cliente', (req, res) => {
     const { id, nome, cpf, telefone, email, endereco } = req.body;
     db.run("UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, email = ?, endereco = ? WHERE id = ?", 
     [nome, cpf, telefone, email, endereco, id], function (err) {
@@ -126,20 +126,9 @@ app.put('/atualizar-cliente', (req, res) => {
             res.send('Cliente atualizado com sucesso!');
         }
     });
-});
+}); */
 
-// Rota para excluir um cliente
-app.delete('/excluir-cliente', (req, res) => {
-    const { id } = req.query;
-    db.run("DELETE FROM clientes WHERE id = ?", [id], function (err) {
-        if (err) {
-            console.error('Erro ao excluir cliente:', err);
-            res.status(500).send('Erro ao excluir cliente');
-        } else {
-            res.send('Cliente excluído com sucesso!');
-        }
-    });
-});
+
 
 // ************************************
 // ************************************
@@ -148,9 +137,9 @@ app.delete('/excluir-cliente', (req, res) => {
 
 // Rota para cadastrar um animal
 app.post('/cadastrar-animal', (req, res) => {
-    const { nome, especie, raca, data_nascimento, cliente_id } = req.body;
-    db.run("INSERT INTO animais (nome, especie, raca, data_nascimento, cliente_id) VALUES (?, ?, ?, ?, ?)", 
-    [nome, especie, raca, data_nascimento, cliente_id], function (err) {
+    const { nome, especie, raca, data_nascimento, cliente_cpf } = req.body;
+    db.run("INSERT INTO animais (nome, especie, raca, data_nascimento, cliente_cpf) VALUES (?, ?, ?, ?, ?)", 
+    [nome, especie, raca, data_nascimento, cliente_cpf], function (err) {
         if (err) {
             console.error('Erro ao cadastrar animal:', err);
             res.status(500).send('Erro ao cadastrar animal');
@@ -161,10 +150,10 @@ app.post('/cadastrar-animal', (req, res) => {
 });
 
 // Rota para atualizar um animal
-app.put('/atualizar-animal', (req, res) => {
-    const { id, nome, especie, raca, data_nascimento, cliente_id } = req.body;
-    db.run("UPDATE animais SET nome = ?, especie = ?, raca = ?, data_nascimento = ?, cliente_id = ? WHERE id = ?", 
-    [nome, especie, raca, data_nascimento, cliente_id, id], function (err) {
+/* app.put('/atualizar-animal', (req, res) => {
+    const { id, nome, especie, raca, data_nascimento, cliente_cpf } = req.body;
+    db.run("UPDATE animais SET nome = ?, especie = ?, raca = ?, data_nascimento = ?, cliente_cpf = ? WHERE id = ?", 
+    [nome, especie, raca, data_nascimento, cliente_cpf, id], function (err) {
         if (err) {
             console.error('Erro ao atualizar animal:', err);
             res.status(500).send('Erro ao atualizar animal');
@@ -172,31 +161,20 @@ app.put('/atualizar-animal', (req, res) => {
             res.send('Animal atualizado com sucesso!');
         }
     });
-});
+}); */
 
-// Rota para excluir um animal
-app.delete('/excluir-animal', (req, res) => {
-    const { id } = req.query;
-    db.run("DELETE FROM animais WHERE id = ?", [id], function (err) {
-        if (err) {
-            console.error('Erro ao excluir animal:', err);
-            res.status(500).send('Erro ao excluir animal');
-        } else {
-            res.send('Animal excluído com sucesso!');
-        }
-    });
-});
+
 
 // ************************************
 // ************************************
-// *****    CONSULTAS E PRONTUÁRIOS  *
+// *****    CONSULTAS    **************
 // ************************************
 
 // Rota para cadastrar uma consulta
 app.post('/cadastrar-consulta', (req, res) => {
-    const { data, hora, tipo_consulta, observacao, cliente_id, animal_id, funcionario_id } = req.body;
-    db.run("INSERT INTO consultas (data, hora, tipo_consulta, observacao, cliente_id, animal_id, funcionario_id) VALUES (?, ?, ?, ?, ?, ?, ?)", 
-    [data, hora, tipo_consulta, observacao, cliente_id, animal_id, funcionario_id], function (err) {
+    const { data, hora, tipo_consulta, observacao, cliente_cpf, animal_id, funcionario_cpf } = req.body;
+    db.run("INSERT INTO consultas (data, hora, tipo_consulta, observacao, cliente_cpf, animal_id, funcionario_cpf) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+    [data, hora, tipo_consulta, observacao, cliente_cpf, animal_id, funcionario_cpf], function (err) {
         if (err) {
             console.error('Erro ao cadastrar consulta:', err);
             res.status(500).send('Erro ao cadastrar consulta');
@@ -206,38 +184,104 @@ app.post('/cadastrar-consulta', (req, res) => {
     });
 });
 
-// Rota para atualizar uma consulta
-app.put('/atualizar-consulta', (req, res) => {
-    const { id, data, hora, tipo_consulta, observacao, cliente_id, animal_id, funcionario_id } = req.body;
-    db.run("UPDATE consultas SET data = ?, hora = ?, tipo_consulta = ?, observacao = ?, cliente_id = ?, animal_id = ?, funcionario_id = ? WHERE id = ?", 
-    [data, hora, tipo_consulta, observacao, cliente_id, animal_id, funcionario_id, id], function (err) {
+
+// Rota para buscar pet (autocomplete no front-end)
+app.get('/buscar-pet', (req, res) => {
+    const query = req.query.query;
+
+    // Busca no banco de dados com base no CPF do cliente
+    db.all("SELECT id, nome FROM animais WHERE cliente_cpf LIKE ? ", [`%${query}%`], (err, rows) => {
         if (err) {
-            console.error('Erro ao atualizar consulta:', err);
-            res.status(500).send('Erro ao atualizar consulta');
+            console.error('Erro ao buscar animal:', err);
+            res.status(500).send('Erro ao buscar animal');
         } else {
-            res.send('Consulta atualizada com sucesso!');
+            res.json(rows);  // Retorna os animal encontrados
         }
     });
 });
 
-// Rota para excluir uma consulta
-app.delete('/excluir-consulta', (req, res) => {
+// Rota para consultar agendamentos
+app.get('/consultar-agendamentos', (req, res) => {
+    const { data, tipo_consulta, observacao, cliente_cpf, animal_id, funcionario_cpf } = req.query;
+
+    let sql = `
+        SELECT 
+            consultas.id,
+            consultas.data, 
+            consultas.hora, 
+            consultas.tipo_consulta, 
+            animais.nome AS nome_animal,
+            clientes.nome AS nome_cliente, 
+            funcionarios.nome AS nome_profissional 
+        FROM 
+            consultas
+        JOIN 
+            clientes ON consultas.cliente_cpf = clientes.cpf
+        JOIN 
+            funcionarios ON consultas.funcionario_cpf = funcionarios.cpf
+        JOIN 
+            animais ON consultas.animal_id = animais.id
+        WHERE 1=1
+    `;
+    const params = [];
+
+    if (data) {
+        sql += " AND consultas.data = ?";
+        params.push(data);
+    }
+    if (tipo_consulta) {
+        sql += " AND consultas.tipo = ?";
+        params.push(tipo_consulta);
+    }
+    if (observacao) {
+        sql += " AND consultas.observacao = ?";
+        params.push(observacao);
+    }
+    if (cliente_cpf) {
+        sql += " AND consultas.cliente_cpf = ?";
+        params.push(cliente_cpf);
+    }
+    if (animal_id) {
+        sql += " AND consultas.animal_id = ?";
+        params.push(animal_id);
+    }
+    if (funcionario_cpf) {
+        sql += " AND consultas.funcionario_cpf = ?";
+        params.push(funcionario_cpf);
+    }
+
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+            console.error('Erro ao consultar agendamentos:', err);
+            return res.status(500).send('Erro ao consultar agendamentos.');
+        }
+        res.json(rows);
+    });
+});
+
+// Rota para excluir um agendamento
+app.delete('/excluir-agendamento', (req, res) => {
     const { id } = req.query;
     db.run("DELETE FROM consultas WHERE id = ?", [id], function (err) {
         if (err) {
-            console.error('Erro ao excluir consulta:', err);
-            res.status(500).send('Erro ao excluir consulta');
-        } else {
-            res.send('Consulta excluída com sucesso!');
+            console.error('Erro ao excluir agendamento:', err);
+            return res.status(500).send('Erro ao excluir agendamento');
         }
+        res.send('Agendamento excluído com sucesso');
     });
 });
 
+// ************************************
+// ************************************
+// *****    PRONTUÁRIOS    ************
+// ************************************
+
+
 // Rota para cadastrar um prontuário
 app.post('/cadastrar-prontuario', (req, res) => {
-    const { data, especie_animal, porte, raca_animal, peso_animal, alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_id } = req.body;
-    db.run("INSERT INTO prontuarios (data, especie_animal, porte, raca_animal, peso_animal, alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-    [data, especie_animal, porte, raca_animal, peso_animal, alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_id], function (err) {
+    const { data, especie_animal, porte, raca_animal, peso_animal, alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_cpf } = req.body;
+    db.run("INSERT INTO prontuarios (data, especie_animal, porte, raca_animal, peso_animal, alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_cpf) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+    [data, especie_animal, porte, raca_animal, peso_animal, alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_cpf], function (err) {
         if (err) {
             console.error('Erro ao cadastrar prontuário:', err);
             res.status(500).send('Erro ao cadastrar prontuário');
@@ -247,22 +291,85 @@ app.post('/cadastrar-prontuario', (req, res) => {
     });
 });
 
-// Rota para excluir um prontuário
-app.delete('/excluir-prontuario', (req, res) => {
-    const { id } = req.query;
-    db.run("DELETE FROM prontuarios WHERE id = ?", [id], function (err) {
+// Rota para consultar prontuarios
+app.get('/consultar-prontuario', (req, res) => {
+    const { data, especie_animal, raca_animal, animal_id, funcionario_cpf } = req.query;
+
+    let sql = `
+        SELECT 
+            prontuarios.id,
+            prontuarios.data, 
+            prontuarios.especie_animal,
+            prontuarios.porte,
+            prontuarios.raca_animal,
+            prontuarios.peso_animal,
+            prontuarios.alergias,
+            prontuarios.vacinas,
+            prontuarios.historico_medico,
+            prontuarios.diagnostico,
+            prontuarios.tratamento,
+            animais.nome AS nome_animal,
+            funcionarios.nome AS nome_profissional 
+        FROM 
+            prontuarios
+        JOIN 
+            animais ON prontuarios.animal_id = animais.id
+        JOIN 
+            funcionarios ON prontuarios.funcionario_cpf = funcionarios.cpf
+        WHERE 1=1
+    `;
+    const params = [];
+
+    if (data) {
+        sql += " AND prontuarios.data = ?";
+        params.push(data);
+    }
+    if (especie_animal) {
+        sql += " AND prontuarios.especie_animal = ?";
+        params.push(especie_animal);
+    }
+    if (raca_animal) {
+        sql += " AND prontuarios.raca_animal = ?";
+        params.push(raca_animal);
+    }
+    if (animal_id) {
+        sql += " AND prontuarios.animal_id = ?";
+        params.push(animal_id);
+    }
+    if (funcionario_cpf) {
+        sql += " AND prontuarios.funcionario_cpf = ?";
+        params.push(funcionario_cpf);
+    }
+
+    db.all(sql, params, (err, rows) => {
         if (err) {
-            console.error('Erro ao excluir prontuário:', err);
-            res.status(500).send('Erro ao excluir prontuário');
-        } else {
-            res.send('Prontuário excluído com sucesso!');
+            console.error('Erro ao consultar agendamentos:', err);
+            return res.status(500).send('Erro ao consultar agendamentos.');
         }
+        res.json(rows);
     });
 });
 
+
+// Rota para buscar um prontuarios pelo ID
+app.get('/prontuario', (req, res) => {
+    const { id } = req.query;
+    db.get("SELECT * FROM prontuarios WHERE id = ?", [id], (err, row) => {
+        if (err) {
+            console.error('Erro ao buscar prontuarios:', err);
+            return res.status(500).send('Erro ao buscar prontuarios');
+        }
+        if (!row) return res.status(404).send('prontuario não encontrado');
+        res.json(row);
+    });
+});
+  
+
+
+
 // ************************************
 // ************************************
-// *****     FUNCIONÁRIOS    *********
+// *****      FUNCIONÁRIOS    *********
 // ************************************
 
 // Rota para cadastrar um funcionário
@@ -280,7 +387,7 @@ app.post('/cadastrar-funcionario', (req, res) => {
 });
 
 // Rota para atualizar um funcionário
-app.put('/atualizar-funcionario', (req, res) => {
+/* app.put('/atualizar-funcionario', (req, res) => {
     const { id, nome, cpf, telefone, email, data_nascimento, data_admissao, carteira_trabalho, setor } = req.body;
     db.run("UPDATE funcionarios SET nome = ?, cpf = ?, telefone = ?, email = ?, data_nascimento = ?, data_admissao = ?, carteira_trabalho = ?, setor = ? WHERE id = ?", 
     [nome, cpf, telefone, email, data_nascimento, data_admissao, carteira_trabalho, setor, id], function (err) {
@@ -291,23 +398,7 @@ app.put('/atualizar-funcionario', (req, res) => {
             res.send('Funcionário atualizado com sucesso!');
         }
     });
-});
-
-// Rota para excluir um funcionário
-app.delete('/excluir-funcionario', (req, res) => {
-    const { id } = req.query;
-    db.run("DELETE FROM funcionarios WHERE id = ?", [id], function (err) {
-        if (err) {
-            console.error('Erro ao excluir funcionário:', err);
-            res.status(500).send('Erro ao excluir funcionário');
-        } else {
-            res.send('Funcionário excluído com sucesso!');
-        }
-    });
-});
-
-
-
+}); */
 
 
 // Teste para verificar se o servidor está rodando
@@ -317,6 +408,6 @@ app.get('/', (req, res) => {
 
 // Iniciando o servidor
 app.listen(port, () => {
-    console.log(`Servidor rodando na porta ${port}`);
+    console.log(`Servidor rodando em http://localhost:${port}`);
 });
 

@@ -27,61 +27,83 @@
         <form id="funciForm"> 
 
             <div class="form-group">
-                <label for="8888">Data da Consulta:</label>
-                <input type="date" id="data-prontuario" placeholder="Data" required>
+                <label for="data-prontuario">Data da Consulta:</label>
+                <input type="date" id="data-prontuario" placeholder="Data" >
             </div>
             <div class="form-group">
-                <label for="8888">Especie:</label>
-                <input type="text" id="especie-prontuario" placeholder="Espécie" required>
+                <label for="especie-prontuario">Especie:</label>
+                <input type="text" id="especie-prontuario" placeholder="Espécie" >
             </div>
             <div class="form-group">
-                <label for="8888">porte:</label>
-               <select id="porte" required>
+                <label for="porte-prontuario">porte:</label>
+               <select id="porte-prontuario" required>
                    <option value="Pequeno">Pequeno</option>
                    <option value="Medio">Madio</option>
                    <option value="Grande">Grande</option>
                </select>
             </div>
             <div class="form-group">
-                <label for="8888">Raça:</label>
-                <input type="text" id="raca-prontuario" placeholder="Raça" required>
+                <label for="raca-prontuario">Raça:</label>
+                <input type="text" id="raca-prontuario" placeholder="Raça" >
             </div>
             <div class="form-group">
-                <label for="8888">Peso:</label>
-                <input type="number" id="peso-prontuario" placeholder="Peso (kg)">
+                <label for="peso-prontuario">Peso:</label>
+                <input type="number" id="peso-prontuario" placeholder="Peso (g)">
             </div>
             <div class="form-group">
-                <label for="8888">Data da Consulta:</label>
+                <label for="alergias-prontuario">Alergias:</label>
                 <input type="text" id="alergias-prontuario" placeholder="Alergias">
             </div>
             <div class="form-group">
-                <label for="8888">vacinas:</label>
+                <label for="vacinas-prontuario">Vacinas:</label>
                 <input type="text" id="vacinas-prontuario" placeholder="Vacinas">
             </div>
             <div class="form-group">
-                <label for="8888">Histórico Medico:</label>
+                <label for="historico-medico-prontuario">Histórico Medico:</label>
                 <textarea id="historico-medico-prontuario" placeholder="Histórico Médico"></textarea>
             </div>
             <div class="form-group">
-                <label for="8888">Diagnostico:</label>
-                <input type="text" id="diagnostico-prontuario" placeholder="Diagnóstico" required>
+                <label for="diagnostico-prontuario">Diagnostico:</label>
+                <input type="text" id="diagnostico-prontuario" placeholder="Diagnóstico" >
             </div>
             <div class="form-group">
-                <label for="8888">Tratamento:</label>
-                <input type="text" id="tratamento-prontuario" placeholder="Tratamento" required>
+                <label for="tratamento-prontuario">Tratamento:</label>
+                <input type="text" id="tratamento-prontuario" placeholder="Tratamento" >
             </div>
             <div class="form-group">
-                <label for="8888">Id do Animal:</label>
-                <input type="number" id="animal-id-prontuario" placeholder="ID do Animal" required>
+                <label for="cliente-cpf-consulta">CPF do Cliente</label>
+                <input type="text" id="cliente-cpf-consulta" placeholder="CPF do Cliente" oninput="buscarpet()" required>
+            </div>
+
+            <div class="form-group">
+                <label for="animal-id-consulta">PET Selecionado:</label>
+                <select id="animal-id-consulta" name="animal-id-consulta" required>
+                    <option value="">Selecione um pet</option>
+                    <!-- opções de pets preenchidas vai aparecer aqui -->
+                </select>
             </div>
             <div class="form-group">
-                <label for="qq">Id do Funcionario:</label>
-                <input type="number" id="funcionario-id-prontuario" placeholder="ID do Funcionário" required>
+                <label for="funcionario-cpf-prontuario">CPF do Funcionario:</label>
+                <input type="text" id="funcionario-cpf-prontuario" placeholder="CPF do Funcionário" >
             </div>
 
 
-            <button type="submit" onclick="cadastrarProntuario()">Salvar Prontuário</button>
+            <button type="submit" onclick="cadastrarProntuario()">Salvar Prontuário</button><br><br>
+            <button onclick="consultarProntuario(event)" type="submit">Consultar Prontuario</button>
         </form>
+
+        <div id="resultadoConsulta">
+            
+        </div>
+
+        <div id="prontuarioModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal()">&times;</span>
+              <h2>Prontuário do Cliente</h2>
+              <p id="prontuarioInfo"></p>
+            </div>
+        </div>
+
         <div id="mensagem" class="mensagem"></div>
     </div>
     <script src="prontuario.js"></script>

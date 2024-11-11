@@ -42,22 +42,32 @@
                 <input type="text" id="observacao-consulta" placeholder="Observações">
             </div>
             <div class="form-group">
-                <label for="cliente-id-consulta">ID do Cliente</label>
-                <input type="number" id="cliente-id-consulta" placeholder="ID do Cliente" required>
+                <label for="cliente-cpf-consulta">CPF do Cliente</label>
+                <input type="text" id="cliente-cpf-consulta" placeholder="CPF do Cliente" oninput="buscarpet()" required>
             </div>
             <div class="form-group">
-                <label for="animal-id-consulta">ID do Animal</label>
-                <input type="number" id="animal-id-consulta" placeholder="ID do Animal" required>
+            <label for="animal-id-consulta">PET Selecionado:</label>
+            <select id="animal-id-consulta" name="animal-id-consulta" required>
+                <option value="">Selecione um pet</option>
+                <!-- opções de pets preenchidas vai aparecer aqui -->
+            </select>
             </div>
+
+
             <div class="form-group">
-                <label for="funcionario-id-consulta">CPF do Funcionário</label>
-                <input type="number" id="funcionario-id-consulta" placeholder="CPF do Funcionário" required>
+                <label for="funcionario-cpf-consulta">CPF do Funcionário</label>
+                <input type="text" id="funcionario-cpf-consulta" placeholder="CPF do Funcionário" required>
             </div>
 
 
 
-            <button type="submit" onclick="cadastrarConsulta()">Cadastrar</button>
+            <button type="submit" onclick="cadastrarConsulta()">Cadastrar</button><br><br>
+            <button onclick="consultarAgendamentos(event)" type="submit">Consultar Agendamentos</button>
         </form>
+
+        <div id="resultadoConsulta">
+            
+        </div>
         <div id="mensagem" class="mensagem"></div>
     </div>
     <script src="agenda.js"></script>
