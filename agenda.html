@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro de Consulta - Clínica Veterinária</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cadastrotutor.html">Cadastro do Tutor</a></li>
+                <li><a href="cadastropet.html">Cadastro do Animal</a></li>
+                <li><a href="cadastrofuncionario.html">Cadastro do funcionario</a></li>
+                <li><a href="agenda.html">Cadastro de consulta</a></li>
+                <li><a href="prontuario.html">Prontuário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <div class="container">
+        <h1>Cadastro de Consulta</h1>
+        <form id="funciForm">
+            <div class="form-group">
+                <label for="data-consulta">Data da Consulta</label>
+                <input type="date" id="data-consulta" placeholder="Data da Consulta" required>
+            </div>
+            <div class="form-group">
+                <label for="hora-consulta">Hora</label>
+                <input type="time" id="hora-consulta" placeholder="Hora" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo-consulta">Tipo de Consulta</label>
+                <input type="text" id="tipo-consulta" placeholder="Tipo de Consulta" required>
+            </div>
+            <div class="form-group">
+                <label for="observacao-consulta">Observações</label>
+                <input type="text" id="observacao-consulta" placeholder="Observações">
+            </div>
+            <div class="form-group">
+                <label for="cliente-cpf-consulta">CPF do Cliente</label>
+                <input type="text" id="cliente-cpf-consulta" placeholder="CPF do Cliente" oninput="buscarpet()" required>
+            </div>
+            <div class="form-group">
+            <label for="animal-id-consulta">PET Selecionado:</label>
+            <select id="animal-id-consulta" name="animal-id-consulta" required>
+                <option value="">Selecione um pet</option>
+                <!-- opções de pets preenchidas vai aparecer aqui -->
+            </select>
+            </div>
+
+
+            <div class="form-group">
+                <label for="funcionario-cpf-consulta">CPF do Funcionário</label>
+                <input type="text" id="funcionario-cpf-consulta" placeholder="CPF do Funcionário" required>
+            </div>
+            <button type="submit" onclick="cadastrarConsulta()">Cadastrar</button><br><br>
+            <button onclick="consultarAgendamentos(event)" type="submit">Consultar Agendamentos</button>
+        </form>
+
+        <div id="resultadoConsulta">
+            
+        </div>
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+    <script src="agenda.js"></script>
+    </main>
+    <footer>
+        <p> &copy;2024 Clínica Veterinária Amigo Animal. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>  

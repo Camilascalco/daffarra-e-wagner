@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Prontuário de Consulta - Clínica Veterinária</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cadastrotutor.html">Cadastro do Tutor</a></li>
+                <li><a href="cadastropet.html">Cadastro do Animal</a></li>
+                <li><a href="cadastrofuncionario.html">Cadastro do funcionario</a></li>
+                <li><a href="agenda.html">Cadastro de consulta</a></li>
+                <li><a href="prontuario.html">Prontuário</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <div class="container">
+        <h1>Prontuário</h1>
+        <form id="funciForm"> 
+
+            <div class="form-group">
+                <label for="data-prontuario">Data da Consulta:</label>
+                <input type="date" id="data-prontuario" placeholder="Data" >
+            </div>
+            <div class="form-group"><footer>
+                <p> &copy;2024 Clínica Veterinária Amigo Animal. Todos os direitos reservados.</p>
+            </footer>spécie" >
+            </div>
+            <div class="form-group">
+                <label for="porte-prontuario">porte:</label>
+               <select id="porte-prontuario" required>
+                   <option value="Pequeno">Pequeno</option>
+                   <option value="Medio">Madio</option>
+                   <option value="Grande">Grande</option>
+               </select>
+            </div>
+            <div class="form-group">
+                <label for="raca-prontuario">Raça:</label>
+                <input type="text" id="raca-prontuario" placeholder="Raça" >
+            </div>
+            <div class="form-group">
+                <label for="peso-prontuario">Peso:</label>
+                <input type="number" id="peso-prontuario" placeholder="Peso (g)">
+            </div>
+            <div class="form-group">
+                <label for="alergias-prontuario">Alergias:</l<footer>
+                    <p> &copy;2024 Clínica Veterinária Amigo Animal. Todos os direitos reservados.</p>
+                </footer>istórico Medico:</label>
+                <textarea id="historico-medico-prontuario" placeholder="Histórico Médico"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="diagnostico-prontuario">Diagnostico:</label>
+                <input type="text" id="diagnostico-prontuario" placeholder="Diagnóstico" >
+            </div>
+            <div class="form-group">
+                <label for="tratamento-prontuario">Tratamento:</label>
+                <input type="text" id="tratamento-prontuario" placeholder="Tratamento" >
+            </div>
+            <div class="form-group">
+                <label for="cliente-cpf-consulta">CPF do Cliente</label>
+                <input type="text" id="cliente-cpf-consulta" placeholder="CPF do Cliente" oninput="buscarpet()" required>
+            </div>
+
+            <div class="form-group">
+                <label for="animal-id-consulta">PET Selecionado:</label>
+                <select id="animal-id-consulta" name="animal-id-consulta" required>
+                    <option value="">Selecione um pet</option>
+                    <!-- opções de pets preenchidas vai aparecer aqui -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="funcionario-cpf-prontuario">CPF do Funcionario:</label>
+                <input type="text" id="funcionario-cpf-prontuario" placeholder="CPF do Funcionário" >
+            </div>
+
+
+            <button type="submit" onclick="cadastrarProntuario()">Salvar Prontuário</button><br><br>
+            <button onclick="consultarProntuario(event)" type="submit">Consultar Prontuario</button>
+        </form>
+
+        <div id="resultadoConsulta">
+            
+        </div>
+
+        <div id="prontuarioModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="fecharModal()">&times;</span>
+              <h2>Prontuário do Cliente</h2>
+              <p id="prontuarioInfo"></p>
+            </div>
+        </div>
+
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+    <script src="prontuario.js"></script>
+    </main>
+    <footer>
+        <p> &copy;2024 Clínica Veterinária Amigo Animal. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>  
