@@ -45,7 +45,7 @@ body {
     flex-direction: column;
     justify-content: center;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #93b4db, #d0e4ae);
+    background-color: #e7e7e785;
     color: #333;
 }
 
@@ -58,7 +58,7 @@ header {
     margin: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #ffffff;
+    background-color: #ffffffb9;
     padding: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
