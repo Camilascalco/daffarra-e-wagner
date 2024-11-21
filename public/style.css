@@ -45,8 +45,10 @@ body {
     flex-direction: column;
     justify-content: center;
     font-family: 'Arial', sans-serif;
-    background-color: #e7e7e785;
+    background: rgb(106,232,142);
+    background: linear-gradient(141deg, rgb(178, 249, 198) 5%, rgba(255,255,255,1) 100%);
     color: #333;
+    height: 100%;
 }
 
 header {
@@ -54,11 +56,14 @@ header {
     align-items: center;
     justify-content: center;
     align-self: center;
+    position: sticky;
+    top: 5px;
     max-width: 95%;
     margin: 10px;
     border: none;
     border-radius: 12px;
-    background-color: #ffffffb9;
+    background: linear-gradient(141deg, rgb(241, 255, 245, 0.2) 5%, rgba(255,255,255,0.8) 100%);
+    backdrop-filter: blur(10px);
     padding: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -84,20 +89,30 @@ nav a:hover {
 
 main {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex: 1;
     padding: 20px;
+    width: 100%;
+    height: 100dvh;
 }
 
 .container {
-    background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.sobre{
+    height: 10dvh;
+}
+
+.entrar{
+    height: 10dvh;
 }
 
 h1 {
@@ -127,6 +142,20 @@ input {
     outline: none;
 }
 
+select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 input:focus {
     border-color: #93b4db;
 }
@@ -134,7 +163,7 @@ input:focus {
 button {
     width: 100%;
     padding: 12px;
-    background-color: #b9e074;
+    background-color: #56c259;
     color: white;
     border: none;
     border-radius: 5px;
@@ -145,7 +174,7 @@ button {
 }
 
 button:hover {
-    background-color: #a3d869;
+    background-color: #4CAF50;
 }
 
 .mensagem {
@@ -157,6 +186,9 @@ button:hover {
 }
 
 
+#resultadoConsulta{
+    margin-top: 20px;
+}
 
 
 /* Estilo do modal */
@@ -194,4 +226,69 @@ button:hover {
     text-decoration: none;
     cursor: pointer;
   }
-  
+
+
+#resultadoConsulta{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120dvh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tabela-prontuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto; 
+    margin-top: 0; /* Removido para centralizar verticalmente */
+    padding: 20px;
+    border-radius: 8px;
+    overflow: auto; 
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    box-shadow: var(--shadow-lg); /* Usando a variável de sombra definida */
+    backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+}
+
+.sair {
+    background-color: red; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    width: 50px;
+    height: auto;
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 5px 10px; /* Espaçamento interno reduzido para um botão pequeno */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: transform var(--transition), box-shadow var(--transition); /* Transições suaves */
+    position: absolute; /* Posiciona o botão */
+    top: 10px; /* Distância do topo */
+    right: 10px; /* Distância da direita */
+    z-index: 1001; /* Garante que o botão fique acima de outros elementos */
+}
+
+.tabela-prontuarios table {
+    width: auto; 
+    table-layout: auto; 
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabela-prontuarios table th, .tabela-prontuarios table td {
+    width: 100%; 
+    padding: 5px;   
+    text-align: center;
+    border: 1px solid #ddd;
+}

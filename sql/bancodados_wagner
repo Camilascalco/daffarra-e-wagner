@@ -66,3 +66,9 @@ CREATE TABLE funcionarios (
     setor TEXT NOT NULL
 );
 
+CREATE TABLE agendamentos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    tipo_consulta TEXT NOT NULL
+);  

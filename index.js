@@ -93,6 +93,16 @@ db.serialize(() => {
             FOREIGN KEY (funcionario_cpf) REFERENCES funcionarios(cpf)
         )
     `);
+
+    // Tabela Agendamentos
+    db.run(`
+        CREATE TABLE IF NOT EXISTS agendamentos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            data DATE NOT NULL,
+            hora TIME NOT NULL,
+            tipo_consulta TEXT NOT NULL
+        )
+    `);
 });
 
 // ************************************
@@ -230,7 +240,7 @@ app.get('/consultar-agendamentos', (req, res) => {
         params.push(data);
     }
     if (tipo_consulta) {
-        sql += " AND consultas.tipo = ?";
+        sql += " AND consultas.tipo_consulta = ?";
         params.push(tipo_consulta);
     }
     if (observacao) {
@@ -249,6 +259,9 @@ app.get('/consultar-agendamentos', (req, res) => {
         sql += " AND consultas.funcionario_cpf = ?";
         params.push(funcionario_cpf);
     }
+
+    console.log('Consulta SQL:', sql);
+    console.log('Parâmetros:', params);
 
     db.all(sql, params, (err, rows) => {
         if (err) {

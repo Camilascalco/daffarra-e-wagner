@@ -57,37 +57,40 @@ function consultarAgendamentos(event) {
     const cliente_cpf = document.getElementById('cliente-cpf-consulta').value;
     const animal_id = document.getElementById('animal-id-consulta').value;
     const funcionario_cpf = document.getElementById('funcionario-cpf-consulta').value;
+
     document.getElementById("resultadoConsulta").innerHTML = `
-    <h3>Resultados da Consulta</h3>
-        <table id="tabelaAgendamentos">
-            <thead>
+    <div id="tabelaprontuarios" class="tabela-prontuarios">
+        <button class="sair" onclick="fecharResultadoConsulta()">x</button>
+        <h3>Resultados da Consulta</h3>
+            <table>
+                <thead>
                 <tr>
                     <th>id</th>
                     <th>Data</th>
-                    <th>Horário</th>
-                    <th>Animal</th>
-                    <th>Cliente</th>
-                    <th>Profissional</th>
-                    <th>Consulta</th>
-                    <th>Ações</th>
+                    <th>Espécie</th>
+                    <th>Porte</th>
+                    <th>Raça</th>
+                    <th>Nome</th>
+                    <th>Veterinário</th>
+                    <th>Ação</th>
                 </tr>
-            </thead>
-            <tbody>
-                <!-- Resultados da consulta serão inseridos aqui pelo script -->
+                </thead>
+                <tbody>
+                    <!-- Resultados da consulta serão inseridos aqui pelo script -->
             </tbody>
         </table>
-
+    </div>
     `;
-    const tabelaAgendamentos = document.getElementById("tabelaAgendamentos").querySelector("tbody");
+
+    const tabelaAgendamentos = document.getElementById("tabelaprontuarios").querySelector("tbody");
     tabelaAgendamentos.innerHTML = "";
 
     const params = new URLSearchParams({ data, tipo_consulta, observacao, cliente_cpf, animal_id, funcionario_cpf });
 
-  
-
     fetch(`/consultar-agendamentos?${params}`)
         .then(response => {
             if (!response.ok) {
+                console.error('Erro na consulta:', response.status, response.statusText);
                 throw new Error('Erro na consulta');
             }
             return response.json();
@@ -102,12 +105,10 @@ function consultarAgendamentos(event) {
                 row.insertCell(4).innerText = agendamento.nome_cliente;
                 row.insertCell(5).innerText = agendamento.nome_profissional;
                 row.insertCell(6).innerText = agendamento.tipo_consulta;
-                
 
                 const actionsCell = row.insertCell(7);
                 actionsCell.innerHTML = `
                     <button onclick="excluirAgendamento('${agendamento.id}')">Excluir</button>
-                    
                 `;
             });
 

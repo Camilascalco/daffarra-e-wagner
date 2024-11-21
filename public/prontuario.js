@@ -1,6 +1,6 @@
 // Função para cadastrar um prontuário
 async function cadastrarProntuario() {
-    
+
     const data = document.getElementById('data-prontuario').value;
     const especie_animal = document.getElementById('especie-prontuario').value;
     const porte = document.getElementById('porte-prontuario').value;
@@ -17,8 +17,10 @@ async function cadastrarProntuario() {
     await fetch(`/cadastrar-prontuario`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data, especie_animal, porte, raca_animal, peso_animal,
-             alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_cpf })
+        body: JSON.stringify({
+            data, especie_animal, porte, raca_animal, peso_animal,
+            alergias, vacinas, historico_medico, diagnostico, tratamento, animal_id, funcionario_cpf
+        })
     })
     alert('Cadastrado!');
 }
@@ -26,21 +28,21 @@ async function cadastrarProntuario() {
 async function buscarpet() {
 
     const buscaPet = document.getElementById('cliente-cpf-consulta').value;
-  
+
     // Se o campo de busca estiver vazio, não faz nada
     if (buscaPet === '') return;
-  
+
     // Faz a busca no servidor
     const response = await fetch(`/buscar-pet?query=${buscaPet}`);
-  
+
     // Verifica se a resposta foi bem-sucedida
     if (response.ok) {
         const animais = await response.json();
-  
+
         // Seleciona o dropdown de pets
         const petSelecionado = document.getElementById('animal-id-consulta');
         petSelecionado.innerHTML = '<option value="">Selecione um pet</option>';
-  
+
         // Preenche o dropdown com os resultados da busca
         animais.forEach(pet => {
             const option = document.createElement('option');
@@ -48,17 +50,17 @@ async function buscarpet() {
             option.textContent = `${pet.nome} (ID: ${pet.id})`;
             petSelecionado.appendChild(option);
         });
-  
+
     } else {
         alert('Erro ao buscar pets. Tente novamente.');
     }
-  }
+}
 
 
-    // Função para consultar prontuarios
+// Função para consultar prontuarios
 function consultarProntuario(event) {
     event.preventDefault();
-    
+
     const data = document.getElementById('data-prontuario').value;
     const especie_animal = document.getElementById('especie-prontuario').value;
     const raca_animal = document.getElementById('raca-prontuario').value;
@@ -67,11 +69,13 @@ function consultarProntuario(event) {
 
 
 
-
+    document.getElementById("resultadoConsulta").style.display = "flex";
     document.getElementById("resultadoConsulta").innerHTML = `
-    <h3>Resultados da Consulta</h3>
-        <table id="tabelaprontuarios">
-            <thead>
+    <div id="tabelaprontuarios" class="tabela-prontuarios">
+        <button class="sair" onclick="fecharResultadoConsulta()">x</button>
+        <h3>Resultados da Consulta</h3>
+            <table>
+                <thead>
                 <tr>
                     <th>id</th>
                     <th>Data</th>
@@ -82,19 +86,20 @@ function consultarProntuario(event) {
                     <th>Veterinário</th>
                     <th>Ação</th>
                 </tr>
-            </thead>
-            <tbody>
-                <!-- Resultados da consulta serão inseridos aqui pelo script -->
+                </thead>
+                <tbody>
+                    <!-- Resultados da consulta serão inseridos aqui pelo script -->
             </tbody>
         </table>
-
+    </div>
     `;
     const tabelaprontuarios = document.getElementById("tabelaprontuarios").querySelector("tbody");
     tabelaprontuarios.innerHTML = "";
 
     const params = new URLSearchParams({ data, especie_animal, raca_animal, animal_id, funcionario_cpf });
 
-  
+    
+
 
     fetch(`/consultar-prontuario?${params}`)
         .then(response => {
@@ -135,6 +140,9 @@ function consultarProntuario(event) {
         });
 }
 
+function fecharResultadoConsulta(){
+    document.getElementById("resultadoConsulta").style.display = "none";
+}
 
 
 // Função para abrir o modal
@@ -146,7 +154,7 @@ function abrirModal() {
 function fecharModal() {
     document.getElementById("prontuarioModal").style.display = "none";
 }
-  
+
 // Função para buscar o prontuário pelo ID e exibir no modal
 function verProntuario(id) {
     alert(id);
@@ -154,7 +162,7 @@ function verProntuario(id) {
         .then(response => response.json())
         .then(data => {
             if (data) {
-            const prontuarioInfo = `
+                const prontuarioInfo = `
                 <strong>Nome:</strong> ${data.id} <br>
                 <strong>Nome:</strong> ${data.data} <br>
                 <strong>Nome:</strong> ${data.especie_animal} <br>
@@ -170,14 +178,13 @@ function verProntuario(id) {
                 <strong>Nome:</strong> ${data.funcionario_cpf} <br>
             
           `;
-          document.getElementById('prontuarioInfo').innerHTML = prontuarioInfo;
-          abrirModal();
-        } else {
-          alert('Prontuário não encontrado');
-        }
-      })
-      .catch(error => {
-        console.error('Erro ao buscar prontuário:', error);
-      });
-  }
-  
+                document.getElementById('prontuarioInfo').innerHTML = prontuarioInfo;
+                abrirModal();
+            } else {
+                alert('Prontuário não encontrado');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao buscar prontuário:', error);
+        });
+}
