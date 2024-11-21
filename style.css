@@ -1,0 +1,295 @@
+/*modifica o corpo todo*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;     
+}
+
+
+/*alinha e modifica todos os nav*/
+nav a{
+    color: white;
+    padding: 15px;
+    text-decoration: none;
+    text-align: center;
+}
+/*modifica o formato*/
+.container{
+    width: 90px;
+    margin: 20px auto;
+}
+/*modifica a borda, a margem e a cor*/
+.servicos, .sobre, .contato{
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*modifica a cor*/
+.servicos h2, .sobre h2, .contatoh2{
+    color: #4CAF50;
+    margin-bottom: 15px;
+}
+/*estilizações para o footer*/
+footer{
+    background-color: #333;
+    color: white;
+    text-align:center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/*alinha, muda a cor, e o tamanho do body*/
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    background: rgb(106,232,142);
+    background: linear-gradient(141deg, rgb(178, 249, 198) 5%, rgba(255,255,255,1) 100%);
+    color: #333;
+    height: 100%;
+}
+/*modifica a cor, tamanho, alinha e arruma a borda do header*/
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    position: sticky;
+    top: 5px;
+    max-width: 95%;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(141deg, rgb(241, 255, 245, 0.2) 5%, rgba(255,255,255,0.8) 100%);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/*modifica o nav ul*/
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    gap: 15px;
+}
+/*modifica a cor, a fonte do nav a*/
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+/*modifica a estlização do nav a*/
+nav a:hover {
+    text-decoration: underline;
+    color: #555;
+}
+/*estilização do tamanho, alinhamento e tamanho do main*/
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    width: 100%;
+    height: 100dvh;
+}
+/*estiliza o tamanho, a centralização e a cor do container*/
+.container {
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+/*estiliza o tamanho*/
+.sobre{
+    height: 10dvh;
+}
+/*modifica o tamanho*/
+.entrar{
+    height: 10dvh;
+}
+/*muda a cor, e a fonte*/
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+/*estiliza a margem e o texto*/
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+/*modifica a margem*/
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+/*estiliza o tamanho, a borda e a cor do input*/
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    outline: none;
+}
+/**/
+select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: #93b4db;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #56c259;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #4CAF50;
+}
+
+.mensagem {
+    margin-top: 20px;
+    color: #28a745;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+
+#resultadoConsulta{
+    margin-top: 20px;
+}
+
+
+/* Estilo do modal */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Conteúdo do modal */
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* Fechar botão */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+#resultadoConsulta{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120dvh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 1001;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tabela-prontuarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto; 
+    margin-top: 0; /* Removido para centralizar verticalmente */
+    padding: 20px;
+    border-radius: 8px;
+    overflow: auto; 
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    box-shadow: var(--shadow-lg); /* Usando a variável de sombra definida */
+    backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+}
+
+.sair {
+    background-color: red; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    border: none; /* Sem borda */
+    width: 50px;
+    height: auto;
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 5px 10px; /* Espaçamento interno reduzido para um botão pequeno */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    transition: transform var(--transition), box-shadow var(--transition); /* Transições suaves */
+    position: absolute; /* Posiciona o botão */
+    top: 10px; /* Distância do topo */
+    right: 10px; /* Distância da direita */
+    z-index: 1001; /* Garante que o botão fique acima de outros elementos */
+}
+
+.tabela-prontuarios table {
+    width: auto; 
+    table-layout: auto; 
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.tabela-prontuarios table th, .tabela-prontuarios table td {
+    width: 100%; 
+    padding: 5px;   
+    text-align: center;
+    border: 1px solid #ddd;
+}
