@@ -1,23 +1,24 @@
+/*modifica o corpo todo*/
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0;     
 }
 
 
-
+/*alinha e modifica todos os nav*/
 nav a{
     color: white;
     padding: 15px;
     text-decoration: none;
     text-align: center;
 }
-
+/*modifica o formato*/
 .container{
     width: 90px;
     margin: 20px auto;
 }
-
+/*modifica a borda, a margem e a cor*/
 .servicos, .sobre, .contato{
     margin-top: 30px;
     padding: 20px;
@@ -25,12 +26,12 @@ nav a{
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+/*modifica a cor*/
 .servicos h2, .sobre h2, .contatoh2{
     color: #4CAF50;
     margin-bottom: 15px;
 }
-
+/*estilizações para o footer*/
 footer{
     background-color: #333;
     color: white;
@@ -39,7 +40,7 @@ footer{
     margin-top: 20px;
 }
 
-
+/*alinha, muda a cor, e o tamanho do body*/
 body {
     display: flex;
     flex-direction: column;
@@ -50,7 +51,7 @@ body {
     color: #333;
     height: 100%;
 }
-
+/*modifica a cor, tamanho, alinha e arruma a borda do header*/
 header {
     display: flex;
     align-items: center;
@@ -67,26 +68,26 @@ header {
     padding: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
+/*modifica o nav ul*/
 nav ul {
     display: flex;
     justify-content: space-around;
     list-style: none;
     gap: 15px;
 }
-
+/*modifica a cor, a fonte do nav a*/
 nav a {
     color: #333;
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s;
 }
-
+/*modifica a estlização do nav a*/
 nav a:hover {
     text-decoration: underline;
     color: #555;
 }
-
+/*estilização do tamanho, alinhamento e tamanho do main*/
 main {
     display: flex;
     flex-direction: column;
@@ -97,7 +98,7 @@ main {
     width: 100%;
     height: 100dvh;
 }
-
+/*estiliza o tamanho, a centralização e a cor do container*/
 .container {
     padding: 30px;
     border-radius: 10px;
@@ -106,33 +107,33 @@ main {
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
 }
-
+/*estiliza o tamanho*/
 .sobre{
     height: 10dvh;
 }
-
+/*modifica o tamanho*/
 .entrar{
     height: 10dvh;
 }
-
+/*muda a cor, e a fonte*/
 h1 {
     color: #333;
     font-size: 24px;
     margin-bottom: 20px;
 }
-
+/*estiliza a margem e o texto*/
 .form-group {
     margin-bottom: 20px;
     text-align: left;
 }
-
+/*modifica a margem*/
 label {
     display: block;
     margin-bottom: 5px;
     color: #555;
     font-weight: bold;
 }
-
+/*estiliza o tamanho, a borda e a cor do input*/
 input {
     width: 100%;
     padding: 10px;
@@ -141,7 +142,7 @@ input {
     transition: border-color 0.3s;
     outline: none;
 }
-
+/**/
 select{
     width: 100%;
     padding: 10px;
