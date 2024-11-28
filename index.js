@@ -115,7 +115,7 @@ app.post('/cadastrar-cliente', (req, res) => {
 });
 
 // Rota para atualizar um cliente
-/* app.put('/atualizar-cliente', (req, res) => {
+ app.put('/atualizar-cliente', (req, res) => {
     const { id, nome, cpf, telefone, email, endereco } = req.body;
     db.run("UPDATE clientes SET nome = ?, cpf = ?, telefone = ?, email = ?, endereco = ? WHERE id = ?", 
     [nome, cpf, telefone, email, endereco, id], function (err) {
@@ -126,7 +126,7 @@ app.post('/cadastrar-cliente', (req, res) => {
             res.send('Cliente atualizado com sucesso!');
         }
     });
-}); */
+}); 
 
 
 
@@ -150,7 +150,7 @@ app.post('/cadastrar-animal', (req, res) => {
 });
 
 // Rota para atualizar um animal
-/* app.put('/atualizar-animal', (req, res) => {
+ app.put('/atualizar-animal', (req, res) => {
     const { id, nome, especie, raca, data_nascimento, cliente_cpf } = req.body;
     db.run("UPDATE animais SET nome = ?, especie = ?, raca = ?, data_nascimento = ?, cliente_cpf = ? WHERE id = ?", 
     [nome, especie, raca, data_nascimento, cliente_cpf, id], function (err) {
@@ -161,7 +161,7 @@ app.post('/cadastrar-animal', (req, res) => {
             res.send('Animal atualizado com sucesso!');
         }
     });
-}); */
+}); 
 
 
 
@@ -387,7 +387,7 @@ app.post('/cadastrar-funcionario', (req, res) => {
 });
 
 // Rota para atualizar um funcionário
-/* app.put('/atualizar-funcionario', (req, res) => {
+ app.put('/atualizar-funcionario', (req, res) => {
     const { id, nome, cpf, telefone, email, data_nascimento, data_admissao, carteira_trabalho, setor } = req.body;
     db.run("UPDATE funcionarios SET nome = ?, cpf = ?, telefone = ?, email = ?, data_nascimento = ?, data_admissao = ?, carteira_trabalho = ?, setor = ? WHERE id = ?", 
     [nome, cpf, telefone, email, data_nascimento, data_admissao, carteira_trabalho, setor, id], function (err) {
@@ -398,7 +398,7 @@ app.post('/cadastrar-funcionario', (req, res) => {
             res.send('Funcionário atualizado com sucesso!');
         }
     });
-}); */
+}); 
 
 
 // Teste para verificar se o servidor está rodando

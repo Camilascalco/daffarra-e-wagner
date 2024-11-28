@@ -64,13 +64,7 @@ function consultarProntuario(event) {
     const raca_animal = document.getElementById('raca-prontuario').value;
     const animal_id = document.getElementById('animal-id-consulta').value;
     const funcionario_cpf = document.getElementById('funcionario-cpf-prontuario').value;
-
-
-
-
     document.getElementById("resultadoConsulta").innerHTML = `
-    <div id="tabelaprontuarios"  class="tabela-prontuarios">
-        <button class="sair" onclick="fecharResultadoConsulta()">X</button>
     <h3>Resultados da Consulta</h3>
         <table id="tabelaprontuarios">
             <thead>
@@ -89,7 +83,7 @@ function consultarProntuario(event) {
                 <!-- Resultados da consulta serão inseridos aqui pelo script -->
             </tbody>
         </table>
-    </div>
+
     `;
     const tabelaprontuarios = document.getElementById("tabelaprontuarios").querySelector("tbody");
     tabelaprontuarios.innerHTML = "";

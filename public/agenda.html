@@ -61,13 +61,11 @@
 
 
 
-            <button onclick="window.location='prontuario.html'"</button><br><br>
-            <button onclick="consultarAgendamentos(event)" type="submit">Consultar Agendamentos</button>
+            <button type="submit" onclick="cadastrarConsulta()">Cadastrar</button><br><br>
+            <button onclick="consultarAgendamento(event)" type="button">Consultar Agendamento</button>
         </form>
         
-        <div id="resultadoConsulta" style="display: none;"></div>
-        <div id="mensagem" class="mensagem"></div>
-    </div>
+        <div id="resultadoConsulta"></div>
     <script src="agenda.js"></script>
     </main>
 
